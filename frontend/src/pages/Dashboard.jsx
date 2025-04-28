@@ -13,11 +13,12 @@ function Dashboard() {
         fetchTasks();
     }, []);
 
-    const filteredTasks = tasks.filter((task) => {
+    const filteredTasks = (Array.isArray(tasks) ? tasks : []).filter((task) => {
         if (filter === 'all') return true;
         if (filter === 'active') return task.status === 'active';
         if (filter === 'completed') return task.status === 'completed';
     });
+    
 
     return (
         <div className="p-6">
